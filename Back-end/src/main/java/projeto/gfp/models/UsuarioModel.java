@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import projeto.gfp.Role;
 
 @Data
 @AllArgsConstructor
@@ -14,7 +15,7 @@ public class UsuarioModel {
 
     @Column(name = "CDUSUARIO")
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long cdUsuario;
+    private Long cdUsuario;
 
     @Column(name = "NMUSUARIO")
     private String nmUsuario;
@@ -29,5 +30,5 @@ public class UsuarioModel {
     private boolean flAtivo;
 
     @Column(name = "ROLE")
-    RoleModel cdRole;
+    private Role ROLE;
 }
