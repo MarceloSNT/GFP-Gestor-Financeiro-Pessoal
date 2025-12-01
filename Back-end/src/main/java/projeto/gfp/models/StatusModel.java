@@ -11,8 +11,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "TBSTATUS")
 public class StatusModel {
-    @Column(name = "CDSTATUS")
+
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CDSTATUS")
     private long cdStatus;
 
     @Column(name = "NMSTATUS")
