@@ -12,7 +12,4 @@ import java.util.Optional;
 public interface UsuarioRepository extends JpaRepository<UsuarioModel, Long> {
     Optional<UsuarioModel> findByDsEmail (String dsEmail);
     Optional<UsuarioModel> findByCdUsuario (Long cdUsuario);
-
-    @Query("select u from UsuarioModel u where u.flAtivo = true")
-    List<UsuarioModel> findAllByFlAtivo();
 }
