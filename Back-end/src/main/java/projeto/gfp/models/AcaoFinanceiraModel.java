@@ -24,10 +24,13 @@ public class AcaoFinanceiraModel {
     private String dsDescricao;
 
     @Column(name = "VLVALOR")
-    private double vlValor;
+    private Double vlValor;
 
     @Column(name = "DTDATA")
     private LocalDate dtData;
+
+    @Column(name = "FLATIVO")
+    private boolean flAtivo;
 
     @ManyToOne
     @JoinColumn(name = "STATUS")
