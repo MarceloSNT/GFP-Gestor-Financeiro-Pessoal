@@ -24,8 +24,4 @@ public class GestaoFinanceiraModel {
     @ManyToOne
     @JoinColumn(name = "USUARIO")
     UsuarioModel cdUsuario;
-
-    @OneToMany
-    @JoinColumn(name = "ACAO")
-    AcaoFinanceiraModel cdAcao;
 }
