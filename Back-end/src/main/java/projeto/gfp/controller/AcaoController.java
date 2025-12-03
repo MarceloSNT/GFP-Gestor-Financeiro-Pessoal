@@ -18,6 +18,7 @@ import projeto.gfp.dto.usuario.response.UsuarioResponseDto;
 import projeto.gfp.service.AcaoService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -56,5 +57,15 @@ public class AcaoController {
     public ResponseEntity<AcaoResponseDto> offOrOnFlAtivo(@RequestParam Long cdAcao){
         AcaoResponseDto acao = acaoService.offOrOnFlAtivo(cdAcao);
         return ResponseEntity.status(HttpStatus.OK).body(acao);
+    }
+
+    @GetMapping("/listar/gestao")
+    @Operation(summary = "Listar ações", description = "Listar todoas as ações ativas de uma gestão especifíca")
+    @ApiResponses(value ={
+            @ApiResponse(responseCode = "200", description = "Ação atualizado com sucesso", content = @Content(schema = @Schema(implementation = UsuarioResponseDto.class))),
+            @ApiResponse(responseCode = "400", description = "Dados inválidos", content = @Content),
+    })
+    public List<AcaoResponseDto> findByGestao(@RequestParam Long cdGestao){
+        return acaoService.findByGestao(cdGestao);
     }
 }

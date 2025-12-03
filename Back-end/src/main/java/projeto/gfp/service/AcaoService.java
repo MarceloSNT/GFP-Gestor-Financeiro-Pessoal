@@ -43,7 +43,7 @@ public class AcaoService {
         acao.setFlAtivo(true);
         acao.setCdStatus(status);
         acao.setCdTipo(tipo);
-        acao.setCdGestao(gestao);
+        acao.setGestao(gestao);
 
         AcaoFinanceiraModel salvo = acaoRepository.save(acao);
 
@@ -54,7 +54,7 @@ public class AcaoService {
                 salvo.getDtData(),
                 salvo.getCdStatus().getNmStatus(),
                 salvo.getCdTipo().getNmTipo(),
-                salvo.getCdGestao().getNmTitulo()
+                salvo.getGestao().getNmTitulo()
         );
     }
 
@@ -69,7 +69,7 @@ public class AcaoService {
                         acoes.getVlValor(),
                         acoes.getDtData(),
                         acoes.getCdStatus().getNmStatus(),
-                        acoes.getCdGestao().getNmTitulo(),
+                        acoes.getGestao().getNmTitulo(),
                         acoes.getCdTipo().getNmTipo()
                 ))
                 .collect(Collectors.toList());
@@ -90,7 +90,23 @@ public class AcaoService {
                 acao.getDtData(),
                 acao.getCdStatus().getNmStatus(),
                 acao.getCdTipo().getNmTipo(),
-                acao.getCdGestao().getNmTitulo()
+                acao.getGestao().getNmTitulo()
         );
+    }
+
+    @Transactional
+    public List<AcaoResponseDto> findByGestao(Long cdGestao){
+        return acaoRepository.findByGestaoCdGestao(cdGestao)
+                .stream()
+                .map(acoes -> new AcaoResponseDto(
+                        acoes.getDsTitulo(),
+                        acoes.getDsDescricao(),
+                        acoes.getVlValor(),
+                        acoes.getDtData(),
+                        acoes.getCdStatus().getNmStatus(),
+                        acoes.getCdTipo().getNmTipo(),
+                        acoes.getGestao().getNmTitulo()
+                ))
+                .collect(Collectors.toList());
     }
 }

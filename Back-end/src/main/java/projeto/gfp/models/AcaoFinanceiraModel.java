@@ -42,6 +42,6 @@ public class AcaoFinanceiraModel {
 
     @ManyToOne
     @JoinColumn(name = "GESTAO")
-    GestaoFinanceiraModel cdGestao;
+    GestaoFinanceiraModel gestao;
 
 }
