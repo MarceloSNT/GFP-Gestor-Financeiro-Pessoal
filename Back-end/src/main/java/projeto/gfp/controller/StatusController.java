@@ -30,8 +30,13 @@ public class StatusController {
     @PostMapping("/cadastro")
     @Operation(summary = "Cadastrar novo status", description = "Criar um novo status no sistema")
     @ApiResponses(value ={
-            @ApiResponse(responseCode = "200", description = "Status criado com sucesso", content = @Content(schema = @Schema(implementation = UsuarioResponseDto.class))),
-            @ApiResponse(responseCode = "400", description = "Dados inválidos", content = @Content),
+            @ApiResponse(responseCode = "200", description = "Operação realizada com sucesso.", content = @Content(schema = @Schema(implementation = StatusController.class))),
+            @ApiResponse(responseCode = "201", description = "Recurso criado com sucesso.", content = @Content(schema = @Schema(implementation = StatusController.class))),
+            @ApiResponse(responseCode = "400", description = "Requisição inválida ou dados incorretos.", content = @Content),
+            @ApiResponse(responseCode = "401", description = "Autenticação necessária ou token inválido.", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Usuário não possui permissão para acessar este recurso.", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Recurso não encontrado.", content = @Content),
+            @ApiResponse(responseCode = "500", description = "Erro interno no servidor.", content = @Content),
     })
     public ResponseEntity<StatusResponseDto> register(@Valid @RequestBody StatusRequestDto requestDto){
         StatusResponseDto status = statusService.save(requestDto);
@@ -41,7 +46,13 @@ public class StatusController {
     @GetMapping("/listar")
     @Operation(summary = "Listar status", description = "Listar todos os status")
     @ApiResponses(value ={
-            @ApiResponse(responseCode = "200", description = "Status encontrados com sucesso", content = @Content(schema = @Schema(implementation = UsuarioResponseDto.class))),
+            @ApiResponse(responseCode = "200", description = "Operação realizada com sucesso.", content = @Content(schema = @Schema(implementation = StatusController.class))),
+            @ApiResponse(responseCode = "201", description = "Recurso criado com sucesso.", content = @Content(schema = @Schema(implementation = StatusController.class))),
+            @ApiResponse(responseCode = "400", description = "Requisição inválida ou dados incorretos.", content = @Content),
+            @ApiResponse(responseCode = "401", description = "Autenticação necessária ou token inválido.", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Usuário não possui permissão para acessar este recurso.", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Recurso não encontrado.", content = @Content),
+            @ApiResponse(responseCode = "500", description = "Erro interno no servidor.", content = @Content),
     })
     public ResponseEntity<List<StatusResponseDto>> findAllStatus(){
         return ResponseEntity.ok().body(statusService.findAllStatus());

@@ -30,8 +30,13 @@ public class TipoController {
     @PostMapping("/cadastro")
     @Operation(summary = "Cadastrar novo tipo", description = "Criar um novo tipo no sistema")
     @ApiResponses(value ={
-            @ApiResponse(responseCode = "200", description = "Tipo criado com sucesso", content = @Content(schema = @Schema(implementation = UsuarioResponseDto.class))),
-            @ApiResponse(responseCode = "400", description = "Dados inválidos", content = @Content),
+            @ApiResponse(responseCode = "200", description = "Operação realizada com sucesso.", content = @Content(schema = @Schema(implementation = TipoController.class))),
+            @ApiResponse(responseCode = "201", description = "Recurso criado com sucesso.", content = @Content(schema = @Schema(implementation = TipoController.class))),
+            @ApiResponse(responseCode = "400", description = "Requisição inválida ou dados incorretos.", content = @Content),
+            @ApiResponse(responseCode = "401", description = "Autenticação necessária ou token inválido.", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Usuário não possui permissão para acessar este recurso.", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Recurso não encontrado.", content = @Content),
+            @ApiResponse(responseCode = "500", description = "Erro interno no servidor.", content = @Content),
     })
     public ResponseEntity<TipoResponseDto> register(@Valid @RequestBody TipoRequestDto requestDto){
         TipoResponseDto tipo = tipoService.save(requestDto);
@@ -41,7 +46,13 @@ public class TipoController {
     @GetMapping("/listar")
     @Operation(summary = "Listar tipos", description = "Listar todos os tipos")
     @ApiResponses(value ={
-            @ApiResponse(responseCode = "200", description = "Tipos encontrados com sucesso", content = @Content(schema = @Schema(implementation = UsuarioResponseDto.class))),
+            @ApiResponse(responseCode = "200", description = "Operação realizada com sucesso.", content = @Content(schema = @Schema(implementation = TipoController.class))),
+            @ApiResponse(responseCode = "201", description = "Recurso criado com sucesso.", content = @Content(schema = @Schema(implementation = TipoController.class))),
+            @ApiResponse(responseCode = "400", description = "Requisição inválida ou dados incorretos.", content = @Content),
+            @ApiResponse(responseCode = "401", description = "Autenticação necessária ou token inválido.", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Usuário não possui permissão para acessar este recurso.", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Recurso não encontrado.", content = @Content),
+            @ApiResponse(responseCode = "500", description = "Erro interno no servidor.", content = @Content),
     })
     public ResponseEntity<List<TipoResponseDto>> findAllType(){
         return ResponseEntity.ok().body(tipoService.findAllType());
