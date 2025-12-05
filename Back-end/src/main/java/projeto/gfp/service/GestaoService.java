@@ -13,6 +13,9 @@ import projeto.gfp.repository.AcaoRepository;
 import projeto.gfp.repository.GestaoRepository;
 import projeto.gfp.repository.UsuarioRepository;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class GestaoService {
@@ -29,6 +32,7 @@ public class GestaoService {
         GestaoFinanceiraModel gestao = new GestaoFinanceiraModel();
         gestao.setNmTitulo(requestDto.nmTitulo());
         gestao.setCdUsuario(usuario);
+        gestao.setFlAtivo(true);
 
         GestaoFinanceiraModel salvo = gestaoRepository.save(gestao);
 
@@ -38,5 +42,19 @@ public class GestaoService {
                 salvo.getCdUsuario().getNmUsuario(),
                 salvo.isFlAtivo()
         );
+    }
+
+    @Transactional
+    public List<GestaoResponseDto> findAllManagement(){
+        return gestaoRepository.findAll()
+                .stream()
+                .filter(gestao -> gestao.isFlAtivo())
+                .map(gestoes -> new GestaoResponseDto(
+                        gestoes.getCdGestao(),
+                        gestoes.getNmTitulo(),
+                        gestoes.getCdUsuario().getNmUsuario(),
+                        gestoes.isFlAtivo()
+                ))
+                .collect(Collectors.toList());
     }
 }
