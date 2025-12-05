@@ -1,0 +1,18 @@
+<div class="d-flex flex-row flex-nowrap">
+  <app-nav-bar></app-nav-bar>
+  <div class="container-fluid min-vh-100 py-5" id="gestoes">
+    <div class="d-flex flex-row justify-content-end px-5">
+      <a class="btn fw-bold px-4 py-3 btnNvGestao" [routerLink]="">+ Nova Gestão</a>
+    </div>
+    <main class="container py-5 min-vh-50 d-flex flex-row flex-wrap justify-content-evenly">
+      @for (gestao of gestoes; track $index) {
+      <div class="card py-3 px-5">
+        <p class="fw-bold text-center">
+          GESTÃO <br />
+          {{ gestao.nmTitulo }}
+        </p>
+      </div>
+      }
+    </main>
+  </div>
+</div>
