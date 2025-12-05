@@ -22,6 +22,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/usuario")
 @Tag(name = "Usuário", description = "Gerenciamento de usuários")
 public class UsuarioController {

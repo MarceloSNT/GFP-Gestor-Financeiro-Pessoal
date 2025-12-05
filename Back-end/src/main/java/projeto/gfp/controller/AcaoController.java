@@ -22,6 +22,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/acao")
 @Tag(name = "Ações", description = "Gerenciamento de ações financeiras")
 public class AcaoController {

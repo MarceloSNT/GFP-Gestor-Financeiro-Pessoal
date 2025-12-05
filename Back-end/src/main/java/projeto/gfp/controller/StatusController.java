@@ -21,6 +21,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/status")
 @Tag(name = "Status", description = "Gerenciamento de status")
 public class StatusController {
