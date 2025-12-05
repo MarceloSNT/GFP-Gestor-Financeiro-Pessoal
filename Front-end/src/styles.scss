@@ -1,1 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
+$GreenDark : #0D370E;
+$GreenLight : #258627;
+$White : #FFFFFF;
+$Black : #000000;
+
+nav{
+    width: 30vw;
+
+    background-color: $GreenDark;
+    color: $GreenLight;
+}
+.logo{
+    width: 25vw;
+    height: 100%;
+}
+hr{
+    width: 100%;
+    border: 2px solid $GreenLight;
+}
+button{
+    background-color: $GreenDark;
+    color: $GreenLight;
+    width: 30vw;
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+
+    &:hover{
+        background-color: $GreenLight;
+        color: $GreenDark;
+        transition: 0.5s;
+    }
+}
+#gestoes{
+    min-width: 70vw;
+}
+a{
+    cursor: pointer;
+}
+.btnNvGestao{
+    border: none;
+    background-color: $GreenDark;
+    color: $GreenLight;
+
+    &:hover{
+        border: none;
+        background-color: $GreenLight;
+        color: $GreenDark;
+        transition: 0.5s;
+    }
+}
+.card{
+    border: 2px solid $GreenLight;
+    border-radius: 10px;
+    background-color: $GreenDark;
+    color: $GreenLight;
+
+    &:hover{
+    border: none;
+    background-color: $GreenLight;
+    color: $GreenDark;
+    box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.144);
+    translate: 2px -5px;
+    transition: 0.3s;
+    }
+}
