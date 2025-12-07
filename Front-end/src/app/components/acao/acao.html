@@ -1,0 +1,33 @@
+<div class="d-flex flex-row flex-nowrap h-100 all-screen">
+  <app-nav-bar></app-nav-bar>
+  <div class="container h-100 py-5" id="gestoes">
+    <div class="d-flex flex-row justify-content-end px-5">
+      <a class="btn fw-bold px-4 py-3 btnNvGestao" [routerLink]="['/criar/acao']">+ Nova Acao</a>
+    </div>
+    <main
+      class="container-fluid py-3 min-vh-50 d-flex flex-row flex-wrap justify-content-evenly scroll-area"
+    >
+      <table>
+        <tr>
+          <th>Título</th>
+          <th>Descrição</th>
+          <th>Valor</th>
+          <th>Status</th>
+          <th>Forma de pagamento</th>
+        </tr>
+        @for (acao of acoes; track $index) {
+        <tr>
+          <td class="table-content">{{ acao.dsTitulo }}</td>
+          <td class="table-content">{{ acao.dsDescricao }}</td>
+          <td>{{ acao.vlValor }}</td>
+          <td>@if (acao.cdStatus === 1) { RECEITA } @else { DESPESA }</td>
+          <td>
+            @switch (acao.cdTipo) { @case (1) { PIX } @case (2) { CRÉDITO } @case (3) { DÉBITO }
+            @case (4) { DINHEIRO } }
+          </td>
+        </tr>
+        }
+      </table>
+    </main>
+  </div>
+</div>

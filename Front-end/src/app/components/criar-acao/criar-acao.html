@@ -1,0 +1,53 @@
+<div class="d-flex flex-row flex-nowrap">
+  <app-nav-bar></app-nav-bar>
+  <div class="container p-5 criarGestao">
+    <h2 class="mb-5">Criar uma nova Ação</h2>
+    <form>
+      <label class="fw-bold text-center">Título</label>
+      <input
+        type="text"
+        class="form-control border border-2 mb-3 w-50"
+        name="dsTitulo"
+        [(ngModel)]="payload.dsTitulo"
+        required
+      />
+      <label class="fw-bold text-center">Descrição</label>
+      <input
+        type="text"
+        class="form-control border border-2 mb-3 w-50"
+        name="dsDescricao"
+        [(ngModel)]="payload.dsDescricao"
+        required
+      />
+      <label class="fw-bold text-center">Valor</label>
+      <input
+        type="number"
+        class="form-control border border-2 mb-3 w-50"
+        name="vlValor"
+        [(ngModel)]="payload.vlValor"
+        required
+      />
+      <label class="fw-bold text-center">Data</label>
+      <input
+        type="date"
+        class="form-control border border-2 mb-3 w-50"
+        name="dtData"
+        [(ngModel)]="payload.dtData"
+        required
+      />
+      <label class="fw-bold text-center">Status</label>
+      <select class="form-control w-50" name="cdStatus" [(ngModel)]="payload.cdStatus">
+        <option [value]="1" class="form-contro">RECEITA</option>
+        <option [value]="2" class="form-contro">DESPESA</option>
+      </select>
+      <label class="fw-bold text-center">Forma de pagamento</label>
+      <select class="form-control w-50" name="cdTipo" [(ngModel)]="payload.cdTipo">
+        <option [value]="1" class="form-contro">PIX</option>
+        <option [value]="2" class="form-contro">CRÉDITO</option>
+        <option [value]="3" class="form-contro">DÉBITO</option>
+        <option [value]="4" class="form-contro">DINHEIRO</option>
+      </select>
+      <button class="btn btnNvGestao w-25 mt-3" (click)="criarAcao()">Enviar</button>
+    </form>
+  </div>
+</div>
