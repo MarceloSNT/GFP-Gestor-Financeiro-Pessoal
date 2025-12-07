@@ -31,7 +31,7 @@ button{
         transition: 0.5s;
     }
 }
-#gestoes{
+#gestoes,.criarGestao{
     min-width: 70vw;
 }
 a{
@@ -54,8 +54,17 @@ a{
     border-radius: 10px;
     background-color: $GreenDark;
     color: $GreenLight;
+    width: 180px;
+    height: 130px;
+
+    .card-content{
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1;
+    }
 
     &:hover{
+    cursor: pointer;
     border: none;
     background-color: $GreenLight;
     color: $GreenDark;
@@ -64,3 +73,28 @@ a{
     transition: 0.3s;
     }
 }
+
+.scroll-area{
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.all-screen{
+     max-height: 100vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.table-content{
+    max-width: 250px;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+td,th{
+    border: 2px solid $Black;
+    padding: 2px 5px;
+    text-align: center;
+}
+
+
