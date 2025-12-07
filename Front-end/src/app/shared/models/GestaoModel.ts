@@ -1,10 +1,10 @@
-import { UsuarioModel } from "./UsuarioModel";
+export class GestaoModel {
+  constructor(init?: Partial<GestaoModel>) {
+    Object.assign(this, init);
+  }
 
-export class GestaoModel{
-    constructor(
-        public cdGestao : number,
-        public nmTitulo : string,
-        public usuario : UsuarioModel,
-        public flAtivo : boolean
-    ){}
+  cdGestao!: number;
+  nmTitulo: string = "";
+  cdUsuario!: number;
+  flAtivo: boolean = true;
 }
