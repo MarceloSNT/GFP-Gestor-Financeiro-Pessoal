@@ -16,4 +16,8 @@ export class GestaoService {
   public getGestao(): Observable<GestaoModel[]> {
     return this.http.get<GestaoModel[]>(`${this.urlApi}/listar`);
   }
+
+  public postGestao(payload: GestaoModel): Observable<GestaoModel> {
+    return this.http.post<GestaoModel>(`${this.urlApi}/cadastro`, payload);
+  }
 }
