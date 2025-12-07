@@ -1,0 +1,17 @@
+<div class="d-flex flex-row flex-nowrap">
+  <app-nav-bar></app-nav-bar>
+  <div class="container p-5 criarGestao">
+    <h2 class="mb-5">Criar uma nova Gestão</h2>
+    <form>
+      <label class="fw-bold text-center">Título da Gestão</label>
+      <input
+        type="text"
+        class="form-control border border-2 mb-3 w-50"
+        [(ngModel)]="payload.nmTitulo"
+        name="nmTitulo"
+        required
+      />
+      <button class="btn btnNvGestao w-25" (click)="criarGestao()">Enviar</button>
+    </form>
+  </div>
+</div>
