@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public record AcaoResponseDto(
+        Long cdAcao,
         String dsTitulo,
         String dsDescricao,
         Double vlValor,

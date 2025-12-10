@@ -45,4 +45,10 @@ criarAcaoNavegar() {
   });
 }
 
+  deletarAcao(cdAcao: number) {
+    this.acaoService.deleteAcao(cdAcao).subscribe(() => {
+      this.carregarAcoes(this.cdGestao);
+      this.cdr.detectChanges();
+    });
+  }
 }

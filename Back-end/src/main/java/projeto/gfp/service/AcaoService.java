@@ -48,6 +48,7 @@ public class AcaoService {
         AcaoFinanceiraModel salvo = acaoRepository.save(acao);
 
         return new AcaoResponseDto(
+                salvo.getCdAcao(),
                 salvo.getDsTitulo(),
                 salvo.getDsDescricao(),
                 salvo.getVlValor(),
@@ -64,6 +65,7 @@ public class AcaoService {
                 .stream()
                 .filter(acaoModel -> acaoModel.isFlAtivo())
                 .map(acoes -> new AcaoResponseDto(
+                        acoes.getCdAcao(),
                         acoes.getDsTitulo(),
                         acoes.getDsDescricao(),
                         acoes.getVlValor(),
@@ -84,6 +86,7 @@ public class AcaoService {
         acaoRepository.save(acao);
 
         return new AcaoResponseDto(
+                acao.getCdAcao(),
                 acao.getDsTitulo(),
                 acao.getDsDescricao(),
                 acao.getVlValor(),
@@ -98,7 +101,9 @@ public class AcaoService {
     public List<AcaoResponseDto> findByGestao(Long cdGestao){
         return acaoRepository.findByGestaoCdGestao(cdGestao)
                 .stream()
+                .filter(acaoFinanceiraModel -> acaoFinanceiraModel.isFlAtivo())
                 .map(acoes -> new AcaoResponseDto(
+                        acoes.getCdAcao(),
                         acoes.getDsTitulo(),
                         acoes.getDsDescricao(),
                         acoes.getVlValor(),

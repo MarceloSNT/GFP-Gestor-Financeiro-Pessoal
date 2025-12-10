@@ -27,7 +27,9 @@
             >{{ acao.cdStatus }}</span
           >
           <span class="badge text-white bg-secondary ms-1 px-4">{{ acao.cdTipo }}</span>
-          <button class="btn delete-acao"><i class="bi bi-trash"></i></button>
+          <button class="btn delete-acao" (click)="deletarAcao(acao.cdAcao)">
+            <i class="bi bi-trash"></i>
+          </button>
         </span>
 
         <span class="my-3">

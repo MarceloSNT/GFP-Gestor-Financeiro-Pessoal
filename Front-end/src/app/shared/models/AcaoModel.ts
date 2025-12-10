@@ -7,7 +7,7 @@ export class AcaoModel{
     Object.assign(this, init);
   }
 
-    public cdAcao? : number;
+    public cdAcao! : number;
     public dsTitulo! : string;
     public dsDescricao! : string;
     public vlValor! : number;

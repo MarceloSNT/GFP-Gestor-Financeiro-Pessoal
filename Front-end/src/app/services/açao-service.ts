@@ -22,4 +22,15 @@ export class AçaoService {
     params: { cdGestao: cdGestao }
   });
   }
+
+  public deleteAcao(cdAcao: number): Observable<void> {
+  return this.http.put<void>(
+    `${this.urlApi}/desativar/ativar`,
+    {},
+    {
+      params: { cdAcao: cdAcao }
+    }
+  );
+}
+
 }
