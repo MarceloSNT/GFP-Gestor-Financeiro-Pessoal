@@ -39,7 +39,7 @@ public class AcaoService {
         acao.setDsTitulo(requestDto.dsTitulo());
         acao.setDsDescricao(requestDto.dsDescricao());
         acao.setVlValor(requestDto.vlValor());
-        acao.setDtData(requestDto.dtData().now());
+        acao.setDtData(requestDto.dtData());
         acao.setFlAtivo(true);
         acao.setCdStatus(status);
         acao.setCdTipo(tipo);

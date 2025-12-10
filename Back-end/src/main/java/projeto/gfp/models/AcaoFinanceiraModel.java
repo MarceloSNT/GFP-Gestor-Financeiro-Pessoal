@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -27,7 +27,7 @@ public class AcaoFinanceiraModel {
     private Double vlValor;
 
     @Column(name = "DTDATA")
-    private LocalDate dtData;
+    private Date dtData;
 
     @Column(name = "FLATIVO")
     private boolean flAtivo;

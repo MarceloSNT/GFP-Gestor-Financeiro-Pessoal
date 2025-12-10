@@ -32,8 +32,14 @@ protected router = inject(ActivatedRoute);
 
   criarAcao(){
     this.router.queryParams.subscribe(params => {
+        
+      console.log("Params recebidos:", params);
+
     const cdGestao = params['cdGestao'];
-    this.acaoService.postAcao(this.payload.cdGestao = cdGestao)
+    this.payload.cdGestao = Number(cdGestao);
+    
+
+    this.acaoService.postAcao(this.payload)
     .subscribe({
       next: (response) => {console.log("Criado:", response)
       this.route.navigate([''])

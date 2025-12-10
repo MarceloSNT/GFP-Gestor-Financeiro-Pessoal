@@ -7,12 +7,12 @@ export class AcaoModel{
     Object.assign(this, init);
   }
 
-    public cdAcao! : number;
+    public cdAcao? : number;
     public dsTitulo! : string;
     public dsDescricao! : string;
     public vlValor! : number;
     public dtData! : Date;
-    public cdStatus! : number;
-    public cdTipo! : number;
+    public cdStatus! : number | string;
+    public cdTipo! : number | string;
     public cdGestao! : number;
 }
