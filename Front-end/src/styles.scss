@@ -3,6 +3,21 @@ $GreenLight : #258627;
 $White : #FFFFFF;
 $Black : #000000;
 
+.bg-receita {
+  background-color: #0D370E !important; 
+}
+
+.bg-despesa {
+  background-color: #8B0000 !important; 
+}
+.bg-receitas {
+  background-color: #28A745 !important; 
+}
+
+.bg-despesas {
+  background-color: #db1616 !important; 
+}
+
 nav{
     width: 30vw;
 
@@ -81,20 +96,34 @@ a{
 }
 
 .all-screen{
-     max-height: 100vh;
+    max-height: 100vh;
     overflow-y: hidden;
     overflow-x: hidden;
 }
 
-.table-content{
-    max-width: 250px;
+.acoes{
+    border: 2px solid $GreenLight;
+    background-color: $GreenDark;
+    color: $White;
+}
+
+.content-description{
+    max-width: 100%;
     overflow-y: hidden;
     overflow-x: auto;
 }
-td,th{
-    border: 2px solid $Black;
-    padding: 2px 5px;
-    text-align: center;
+
+.delete-acao{
+    background-color: transparent;
+    border: none;
+    color: $White;
+    width: 25px;
+    cursor: pointer;
+
+    &:hover{
+        color: red;
+        transition: 0.3s;
+    }
 }
 
 
