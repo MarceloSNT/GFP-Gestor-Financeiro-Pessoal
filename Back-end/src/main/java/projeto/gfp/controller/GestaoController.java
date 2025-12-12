@@ -59,4 +59,20 @@ public class GestaoController {
     public ResponseEntity<List<GestaoResponseDto>> findAllManagements(){
         return ResponseEntity.ok().body(gestaoService.findAllManagement());
     }
+
+    @PutMapping("/desativar/ativar")
+    @Operation(summary = "Alterar flAtivo de Gestão", description = "Alterar o flAtivo de gestão no sistema")
+    @ApiResponses(value ={
+            @ApiResponse(responseCode = "200", description = "Operação realizada com sucesso.", content = @Content(schema = @Schema(implementation = AcaoController.class))),
+            @ApiResponse(responseCode = "201", description = "Recurso criado com sucesso.", content = @Content(schema = @Schema(implementation = AcaoController.class))),
+            @ApiResponse(responseCode = "400", description = "Requisição inválida ou dados incorretos.", content = @Content),
+            @ApiResponse(responseCode = "401", description = "Autenticação necessária ou token inválido.", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Usuário não possui permissão para acessar este recurso.", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Recurso não encontrado.", content = @Content),
+            @ApiResponse(responseCode = "500", description = "Erro interno no servidor.", content = @Content),
+    })
+    public ResponseEntity<GestaoResponseDto> offOrOnFlAtivo(@RequestParam Long cdGestao) {
+        GestaoResponseDto gestao = gestaoService.offOrOnFlAtivo(cdGestao);
+        return ResponseEntity.status(HttpStatus.OK).body(gestao);
+    }
 }

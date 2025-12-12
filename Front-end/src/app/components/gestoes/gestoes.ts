@@ -45,4 +45,10 @@ abrirAcoes(cdGestao: number) {
   });
 }
 
+deletarGestao(cdGestao: number) {
+  this.gestoesService.deletarGestao(cdGestao).subscribe(() => {
+    this.gestoes = this.gestoes.filter(gestao => gestao.cdGestao !== cdGestao);
+    this.cdr.detectChanges();
+  });
+}
 }

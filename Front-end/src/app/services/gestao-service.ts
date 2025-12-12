@@ -20,4 +20,14 @@ export class GestaoService {
   public postGestao(payload: GestaoModel): Observable<GestaoModel> {
     return this.http.post<GestaoModel>(`${this.urlApi}/cadastro`, payload);
   }
+
+  public deletarGestao(cdGestao: number): Observable<void> {
+    return this.http.put<void>(
+      `${this.urlApi}/desativar/ativar`,
+      {},
+      {
+        params: {cdGestao: cdGestao}
+      }
+    );
+  }
 }

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import projeto.gfp.dto.acao.response.AcaoResponseDto;
 import projeto.gfp.dto.gestao.request.GestaoRequestDto;
 import projeto.gfp.dto.gestao.response.GestaoResponseDto;
 import projeto.gfp.models.AcaoFinanceiraModel;
@@ -56,5 +57,21 @@ public class GestaoService {
                         gestoes.isFlAtivo()
                 ))
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public GestaoResponseDto offOrOnFlAtivo(Long cdGestao) {
+        GestaoFinanceiraModel gestao = gestaoRepository.findByCdGestao(cdGestao)
+                .orElseThrow(() -> new RuntimeException("Gestão não encontrada"));
+
+        gestao.setFlAtivo(!gestao.isFlAtivo());
+        gestaoRepository.save(gestao);
+
+        return new GestaoResponseDto(
+                gestao.getCdGestao(),
+                gestao.getNmTitulo(),
+                gestao.getCdUsuario().getNmUsuario(),
+                gestao.isFlAtivo()
+        );
     }
 }

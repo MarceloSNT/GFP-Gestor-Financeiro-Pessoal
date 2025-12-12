@@ -11,11 +11,18 @@
       class="container py-3 min-vh-50 d-flex flex-row flex-wrap justify-content-evenly scroll-area"
     >
       @for (gestao of gestoes; track $index) {
-      <div class="card py-3 px-5 mb-4" (click)="abrirAcoes(gestao.cdGestao)">
-        <p class="fw-bold text-center card-content">
-          GESTÃO <br />
-          {{ gestao.nmTitulo }}
-        </p>
+      <div class="mb-4">
+        <div class="card p-3" (click)="abrirAcoes(gestao.cdGestao)">
+          <p class="fw-bold text-center card-content">
+            GESTÃO <br />
+            {{ gestao.nmTitulo }}
+          </p>
+        </div>
+        <div>
+          <button class="btn delete-gestao" (click)="deletarGestao(gestao.cdGestao)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
       </div>
       }
     </main>

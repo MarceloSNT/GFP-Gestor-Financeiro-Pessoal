@@ -66,7 +66,10 @@ a{
 }
 .card{
     border: 2px solid $GreenLight;
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
     background-color: $GreenDark;
     color: $GreenLight;
     width: 180px;
@@ -122,6 +125,29 @@ a{
 
     &:hover{
         color: red;
+        transition: 0.3s;
+    }
+}
+
+.delete-gestao{
+    background-color: $GreenDark;
+    border-bottom: 2px solid $GreenLight;
+    border-right: 2px solid $GreenLight;
+    border-left: 2px solid $GreenLight;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: $GreenLight;
+    width: 100%;
+    cursor: pointer;
+
+    &:hover{
+        border-bottom: 2px solid $GreenLight;
+        border-right: 2px solid $GreenLight;
+        border-left: 2px solid $GreenLight;        
+        background-color: $GreenLight;
+        color: $GreenDark;
         transition: 0.3s;
     }
 }
