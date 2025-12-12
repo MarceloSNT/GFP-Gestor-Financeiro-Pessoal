@@ -2,6 +2,7 @@ package projeto.gfp.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import projeto.gfp.Role;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public UsuarioResponseDto save(UsuarioRequestDto usuarioRequest){
@@ -30,7 +32,7 @@ public class UsuarioService {
         UsuarioModel usuario = new UsuarioModel();
         usuario.setNmUsuario(usuarioRequest.nmUsuario());
         usuario.setDsEmail(usuarioRequest.dsEmail());
-        usuario.setDsSenha(usuarioRequest.dsSenha());
+        usuario.setDsSenha(passwordEncoder.encode(usuarioRequest.dsSenha()));
         usuario.setROLE(Role.USER);
         usuario.setFlAtivo(true);
 
