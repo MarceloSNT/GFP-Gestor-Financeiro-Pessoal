@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { GestaoModel } from '../shared/models/GestaoModel';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,8 +13,11 @@ export class GestaoService {
   protected urlApi: string = 'http://localhost:8080/api/gestao';
   protected gestoes!: GestaoModel[];
 
-  public getGestao(): Observable<GestaoModel[]> {
-    return this.http.get<GestaoModel[]>(`${this.urlApi}/listar`);
+  public getGestao(cdUsuario : number): Observable<GestaoModel[]> {
+    return this.http.get<GestaoModel[]>(`${this.urlApi}/listar/usuario`,
+    {
+      params: { cdUsuario: cdUsuario }
+    });
   }
 
   public postGestao(payload: GestaoModel): Observable<GestaoModel> {
@@ -22,10 +25,17 @@ export class GestaoService {
   }
 
   public deletarGestao(cdGestao: number): Observable<void> {
+    const token = localStorage.getItem('token');
+    
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    
     return this.http.put<void>(
       `${this.urlApi}/desativar/ativar`,
       {},
       {
+        headers,
         params: {cdGestao: cdGestao}
       }
     );
