@@ -23,15 +23,19 @@ export class Gestoes implements OnInit{
   protected cdr = inject(ChangeDetectorRef);
   protected router = inject(Router);
 
+  protected cdUsuario: number = Number(localStorage.getItem('cdUsuario'));
+  protected nmUsuario: string = String(localStorage.getItem('nmUsuario'));
+
 ngOnInit(): void {
-  this.gestoesService.getGestao().subscribe({
+  this.gestoesService.getGestao(this.cdUsuario).subscribe({
     next: (gestoes) => {
+      console.log('Sucesso ao carregar gestões:', gestoes);
       this.gestoes = gestoes;
-  this.cdr.detectChanges();
+      this.cdr.detectChanges();
     },
     error: (err) => {
       console.error('Erro ao carregar gestões:', err);
-  this.cdr.detectChanges();
+      this.cdr.detectChanges();
     }
   })
   this.cdr.detectChanges();

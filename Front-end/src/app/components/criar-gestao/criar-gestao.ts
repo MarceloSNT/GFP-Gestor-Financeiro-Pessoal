@@ -17,10 +17,11 @@ export class CriarGestao {
   protected gestoesService = inject(GestaoService);
   protected cdr = inject(ChangeDetectorRef);
   protected route = inject(Router)
+  protected cdUsuario: number = Number(localStorage.getItem('cdUsuario'));
 
   protected payload: GestaoModel = new GestaoModel({
   nmTitulo: "",
-  cdUsuario: 1,
+  cdUsuario: this.cdUsuario,
   flAtivo: true
   });
 

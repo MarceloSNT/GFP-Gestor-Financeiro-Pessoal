@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AçaoService } from '../../services/açao-service';
 import { AcaoModel } from '../../shared/models/AcaoModel';
 import { FormsModule } from '@angular/forms';
-import { GestaoModel } from '../../shared/models/GestaoModel';
+import { TipoModel } from '../../shared/models/TipoModel';
 
 @Component({
   selector: 'app-criar-acao',
@@ -14,6 +14,8 @@ import { GestaoModel } from '../../shared/models/GestaoModel';
   styleUrl: './criar-acao.scss',
 })
 export class CriarAcao {
+@Input() tipos : TipoModel[] = [];
+@Input() tipo! : TipoModel;
   
 protected router = inject(ActivatedRoute);
   protected acaoService = inject(AçaoService);

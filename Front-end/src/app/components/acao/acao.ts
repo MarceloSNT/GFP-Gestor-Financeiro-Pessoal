@@ -7,7 +7,7 @@ import { DatePipe, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-acao',
-  imports: [RouterLink, NavBar, DatePipe, NgClass],
+  imports: [NavBar, DatePipe, NgClass],
   templateUrl: './acao.html',
   styleUrl: './acao.scss',
 })
@@ -19,7 +19,7 @@ export class Acao implements OnInit{
   protected route = inject(ActivatedRoute);
   protected router = inject(Router);
   protected cdr = inject(ChangeDetectorRef);
-
+  
   protected cdGestao!: number;
 
 ngOnInit() {

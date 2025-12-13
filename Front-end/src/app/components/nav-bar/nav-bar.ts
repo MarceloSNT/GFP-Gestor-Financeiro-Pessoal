@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from "@angular/router";
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,4 +8,10 @@ import { ActivatedRoute, RouterLink } from "@angular/router";
   styleUrl: './nav-bar.scss',
 })
 export class NavBar {
+  public route = inject(Router);
+
+  public logout(){
+    localStorage.clear();
+    this.route.navigate(['/login']);
+  }
 }

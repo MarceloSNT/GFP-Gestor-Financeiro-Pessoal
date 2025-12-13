@@ -1,8 +1,8 @@
 <div class="d-flex flex-row flex-nowrap h-100 all-screen">
   <app-nav-bar></app-nav-bar>
   <div class="container h-100" id="gestoes">
-    <div class="d-flex flex-row justify-content-between px-5 py-3">
-      <h2 class="fw-bold">Seja Bem vindo,</h2>
+    <div class="d-flex flex-row justify-content-between px-5 pb-3 pt-5">
+      <h2 class="fw-bold">Seja Bem vindo, {{ nmUsuario }}</h2>
       <a class="btn fw-bold px-4 py-3 btnNvGestao" [routerLink]="['/criar/gestao']"
         >+ Nova Gestão</a
       >
@@ -10,7 +10,9 @@
     <main
       class="container py-3 min-vh-50 d-flex flex-row flex-wrap justify-content-evenly scroll-area"
     >
-      @for (gestao of gestoes; track $index) {
+      @if (gestoes.length == 0) {
+      <h3 class="fw-bold pt-5 text-center">Nenhuma gestão encontrada. Crie uma nova gestão!</h3>
+      }@else { @for (gestao of gestoes; track $index) {
       <div class="mb-4">
         <div class="card p-3" (click)="abrirAcoes(gestao.cdGestao)">
           <p class="fw-bold text-center card-content">
@@ -24,7 +26,7 @@
           </button>
         </div>
       </div>
-      }
+      } }
     </main>
   </div>
 </div>
