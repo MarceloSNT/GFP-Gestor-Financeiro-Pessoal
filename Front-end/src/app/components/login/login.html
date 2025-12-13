@@ -1,0 +1,21 @@
+<div class="w-100 d-flex flex-row">
+  <div
+    class="container container-cadastro min-vh-100 w-50 d-flex flex-column flex-nowrap justify-content-center align-items-center"
+  >
+    <h2 class="mb-4">LOGIN</h2>
+    <form class="w-75 d-flex flex-column flex-nowrap justify-content-center align-items-start">
+      <label>Email</label>
+      <input type="email" class="form-control mb-4" [(ngModel)]="dsEmail" name="dsEmail" />
+      <label>Senha</label>
+      <input type="password" class="form-control mb-4" [(ngModel)]="dsSenha" name="dsSenha" />
+      <button class="btn mx-auto btnCad fw-bold w-50 mt-5 mb-3" (click)="login()">Entrar</button>
+      <p class="text-center w-100">ou</p>
+      <p class="text-center w-100">
+        Não possui conta? <a class="link-login" [routerLink]="['/cadastro']">Cadastrar</a>
+      </p>
+    </form>
+  </div>
+  <div class="w-50 min-vh-100 d-flex flex-column justify-content-center align-items-center">
+    <img src="gfp-home.png" alt="gfp" />
+  </div>
+</div>
