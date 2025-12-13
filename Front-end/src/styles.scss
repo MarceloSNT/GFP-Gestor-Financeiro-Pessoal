@@ -152,4 +152,35 @@ a{
     }
 }
 
+form{
+    color: $GreenLight;
+}
+.container-cadastro{
+    background-color: $GreenDark;
+}
+h2{
+    color: $GreenLight;
+}
+.btnCad{
+    background-color: $GreenDark;
+    color: $GreenLight;
+    border: 2px solid $GreenLight;
 
+    &:hover{
+        background-color: $GreenLight;
+        color: $GreenDark;
+        transition: 0.5s;
+    }
+}
+
+.link-login{
+    color: $GreenLight;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover{
+        color: $White;
+        text-decoration: underline;
+        transition: 0.3s;
+    }
+}
