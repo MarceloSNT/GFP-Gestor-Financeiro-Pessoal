@@ -18,6 +18,9 @@ public class GestaoFinanceiraModel {
     @Column(name = "NMTITULO")
     private String nmTitulo;
 
+    @Column(name = "NUSALDO")
+    private Double nuSaldo;
+
     @Column(name = "FLATIVO")
     private boolean flAtivo;
 

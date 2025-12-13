@@ -45,8 +45,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT,"/api/acao/desativar/ativar").permitAll()
                         .requestMatchers(HttpMethod.PUT,"/api/gestao/desativar/ativar").permitAll()
 
-                        .requestMatchers(HttpMethod.GET, "/api/usuario/listar/email").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/usuario/listar/email").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/usuario/listar/**").permitAll()
 
                         .requestMatchers(
                                 "/swagger-ui/**",

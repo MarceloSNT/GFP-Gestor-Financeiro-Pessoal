@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { GestaoModel } from '../shared/models/GestaoModel';
 import { AcaoModel } from '../shared/models/AcaoModel';
 import { Observable } from 'rxjs';
+import { UsuarioModel } from '../shared/models/UsuarioModel';
 
 @Injectable({
   providedIn: 'root',
@@ -42,4 +43,17 @@ export class AçaoService {
   );
 }
 
+listarUsuario(): Observable<UsuarioModel> {
+    const token = localStorage.getItem('token');
+    
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    return this.http.get<UsuarioModel>(`http://localhost:8080/api/usuario/listar/código`,
+      {
+      headers,
+      params: { cdUsuario: Number(localStorage.getItem('cdUsuario')) }
+    });
+  }
 }

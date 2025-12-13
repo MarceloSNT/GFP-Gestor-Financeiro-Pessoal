@@ -3,14 +3,12 @@ package projeto.gfp.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import projeto.gfp.controller.AcaoController;
 import projeto.gfp.dto.acao.request.AcaoRequestDto;
 import projeto.gfp.dto.acao.response.AcaoResponseDto;
 import projeto.gfp.dto.usuario.response.UsuarioResponseDto;
 import projeto.gfp.models.*;
-import projeto.gfp.repository.AcaoRepository;
-import projeto.gfp.repository.GestaoRepository;
-import projeto.gfp.repository.StatusRepository;
-import projeto.gfp.repository.TipoRepository;
+import projeto.gfp.repository.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,6 +21,7 @@ public class AcaoService {
     private final GestaoRepository gestaoRepository;
     private final StatusRepository statusRepository;
     private final TipoRepository tipoRepository;
+    private final UsuarioRepository usuarioRepository;
 
     @Transactional
     public AcaoResponseDto save(AcaoRequestDto requestDto) {
@@ -42,6 +41,13 @@ public class AcaoService {
         acao.setDtData(requestDto.dtData());
         acao.setFlAtivo(true);
         acao.setCdStatus(status);
+
+        if (status.getCdStatus() == 1){
+            gestao.setNuSaldo(gestao.getNuSaldo() + acao.getVlValor());
+        } else if (status.getCdStatus() == 2) {
+            gestao.setNuSaldo(gestao.getNuSaldo() - acao.getVlValor());
+        }
+
         acao.setCdTipo(tipo);
         acao.setGestao(gestao);
 
@@ -82,7 +88,15 @@ public class AcaoService {
         AcaoFinanceiraModel acao = acaoRepository.findByCdAcao(cdAcao)
                 .orElseThrow(() -> new RuntimeException("Ação não encontrada"));
 
+        GestaoFinanceiraModel gestao = gestaoRepository.findByCdGestao(acao.getGestao().getCdGestao())
+                .orElseThrow(() -> new RuntimeException("Gestão não encontrado"));
+
         acao.setFlAtivo(!acao.isFlAtivo());
+        if (acao.getCdStatus().getCdStatus() == 2 && acao.isFlAtivo() == false) {
+            gestao.setNuSaldo(gestao.getNuSaldo() + acao.getVlValor());
+        }else if (acao.getCdStatus().getCdStatus() == 1 && acao.isFlAtivo() == false){
+            gestao.setNuSaldo(gestao.getNuSaldo() - acao.getVlValor());
+        }
         acaoRepository.save(acao);
 
         return new AcaoResponseDto(

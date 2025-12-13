@@ -33,6 +33,7 @@ public class GestaoService {
         GestaoFinanceiraModel gestao = new GestaoFinanceiraModel();
         gestao.setNmTitulo(requestDto.nmTitulo());
         gestao.setCdUsuario(usuario);
+        gestao.setNuSaldo(0.0);
         gestao.setFlAtivo(true);
 
         GestaoFinanceiraModel salvo = gestaoRepository.save(gestao);
@@ -40,6 +41,7 @@ public class GestaoService {
         return new GestaoResponseDto(
                 salvo.getCdGestao(),
                 salvo.getNmTitulo(),
+                salvo.getNuSaldo(),
                 salvo.getCdUsuario().getNmUsuario(),
                 salvo.isFlAtivo()
         );
@@ -53,6 +55,7 @@ public class GestaoService {
                 .map(gestoes -> new GestaoResponseDto(
                         gestoes.getCdGestao(),
                         gestoes.getNmTitulo(),
+                        gestoes.getNuSaldo(),
                         gestoes.getCdUsuario().getNmUsuario(),
                         gestoes.isFlAtivo()
                 ))
@@ -70,6 +73,7 @@ public class GestaoService {
         return new GestaoResponseDto(
                 gestao.getCdGestao(),
                 gestao.getNmTitulo(),
+                gestao.getNuSaldo(),
                 gestao.getCdUsuario().getNmUsuario(),
                 gestao.isFlAtivo()
         );
@@ -84,6 +88,7 @@ public class GestaoService {
                 .map(gestoes -> new GestaoResponseDto(
                         gestoes.getCdGestao(),
                         gestoes.getNmTitulo(),
+                        gestoes.getNuSaldo(),
                         gestoes.getCdUsuario().getNmUsuario(),
                         gestoes.isFlAtivo()
                 ))

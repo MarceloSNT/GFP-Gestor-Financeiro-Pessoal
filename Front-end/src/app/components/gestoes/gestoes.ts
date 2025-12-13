@@ -28,9 +28,9 @@ export class Gestoes implements OnInit{
 
 ngOnInit(): void {
   this.gestoesService.getGestao(this.cdUsuario).subscribe({
-    next: (gestoes) => {
-      console.log('Sucesso ao carregar gestões:', gestoes);
-      this.gestoes = gestoes;
+    next: (response) => {
+      console.log('Sucesso ao carregar gestões:', response);
+      this.gestoes = response;
       this.cdr.detectChanges();
     },
     error: (err) => {
