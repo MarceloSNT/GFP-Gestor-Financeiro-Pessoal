@@ -74,4 +74,19 @@ public class GestaoService {
                 gestao.isFlAtivo()
         );
     }
+
+    @Transactional
+    public List<GestaoResponseDto> findBycdUsuario(Long cdUsuario){
+
+        return gestaoRepository.findByCdUsuarioCdUsuario(cdUsuario)
+                .stream()
+                .filter(gestaoFinanceiraModel -> gestaoFinanceiraModel.isFlAtivo())
+                .map(gestoes -> new GestaoResponseDto(
+                        gestoes.getCdGestao(),
+                        gestoes.getNmTitulo(),
+                        gestoes.getCdUsuario().getNmUsuario(),
+                        gestoes.isFlAtivo()
+                ))
+                .collect(Collectors.toList());
+    }
 }

@@ -42,6 +42,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/gestao/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/acao/**").permitAll()
 
+                        .requestMatchers(HttpMethod.PUT,"/api/acao/desativar/ativar").permitAll()
+                        .requestMatchers(HttpMethod.PUT,"/api/gestao/desativar/ativar").permitAll()
+
                         .requestMatchers(HttpMethod.GET, "/api/usuario/listar/email").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/usuario/listar/email").permitAll()
 

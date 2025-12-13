@@ -60,6 +60,21 @@ public class GestaoController {
         return ResponseEntity.ok().body(gestaoService.findAllManagement());
     }
 
+    @GetMapping("/listar/usuario")
+    @Operation(summary = "Listar gestões por usuário", description = "Listar todas gestões de um usuário no sistema")
+    @ApiResponses(value ={
+            @ApiResponse(responseCode = "200", description = "Operação realizada com sucesso.", content = @Content(schema = @Schema(implementation = GestaoController.class))),
+            @ApiResponse(responseCode = "201", description = "Recurso criado com sucesso.", content = @Content(schema = @Schema(implementation = GestaoController.class))),
+            @ApiResponse(responseCode = "400", description = "Requisição inválida ou dados incorretos.", content = @Content),
+            @ApiResponse(responseCode = "401", description = "Autenticação necessária ou token inválido.", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Usuário não possui permissão para acessar este recurso.", content = @Content),
+            @ApiResponse(responseCode = "404", description = "Recurso não encontrado.", content = @Content),
+            @ApiResponse(responseCode = "500", description = "Erro interno no servidor.", content = @Content),
+    })
+    public ResponseEntity<List<GestaoResponseDto>> findAllByCdUsuario(@RequestParam Long cdUsuario){
+        return ResponseEntity.ok().body(gestaoService.findBycdUsuario(cdUsuario));
+    }
+
     @PutMapping("/desativar/ativar")
     @Operation(summary = "Alterar flAtivo de Gestão", description = "Alterar o flAtivo de gestão no sistema")
     @ApiResponses(value ={
